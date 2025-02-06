@@ -1,3 +1,4 @@
+use ss6;
 -- 2
 select CustomerName,ProductName,sum(Quantity) as TotalQuantity from Orders
 group by CustomerName,ProductName

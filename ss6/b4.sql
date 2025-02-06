@@ -1,3 +1,4 @@
+use ss6;
 CREATE TABLE Products (
     ProductID INT AUTO_INCREMENT PRIMARY KEY,  -- Khóa chính tự động tăng
     ProductName VARCHAR(100) NOT NULL,         -- Tên sản phẩm

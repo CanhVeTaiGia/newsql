@@ -1,3 +1,4 @@
+use ss6;
 -- 2
 delete a from appointments a
 join doctors d on a.doctorid = d.doctorid

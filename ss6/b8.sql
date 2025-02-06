@@ -1,3 +1,4 @@
+use ss6;
 -- 2
 select s.student_id,s.name as student_name,s.email,c.course_name,e.enrollment_date from students s
 join enrollments e on s.student_id = e.student_id

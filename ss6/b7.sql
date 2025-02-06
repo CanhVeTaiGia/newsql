@@ -1,3 +1,4 @@
+use ss6
 -- Tạo bảng students
 CREATE TABLE students (
     student_id INT AUTO_INCREMENT PRIMARY KEY,

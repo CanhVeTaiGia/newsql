@@ -1,3 +1,4 @@
+use ss6;
 -- Tạo bảng Users
 CREATE TABLE Users (
     user_id INT AUTO_INCREMENT PRIMARY KEY, -- ID duy nhất của người dùng

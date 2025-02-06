@@ -1,3 +1,4 @@
+use ss6;
 CREATE TABLE patients (
     PatientID INT AUTO_INCREMENT PRIMARY KEY,
     FullName VARCHAR(100) NOT NULL,

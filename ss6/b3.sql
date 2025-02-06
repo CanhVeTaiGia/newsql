@@ -1,3 +1,4 @@
+use ss6;
 -- 2
 select min(Price) as MinPrice, max(Price) as MaxPrice from Orders;
 
