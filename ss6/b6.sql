@@ -1,3 +1,4 @@
+use ss6;
 -- Tạo bảng employees
 CREATE TABLE employees (
     employee_id INT AUTO_INCREMENT PRIMARY KEY, 
