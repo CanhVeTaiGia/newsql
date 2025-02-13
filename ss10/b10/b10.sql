@@ -19,17 +19,17 @@ delimiter &&
 create procedure getSpecialCountriesAndCities(in language_name varchar(50))
 begin
     select 
-        c.Name as CountryName, 
+        olv.CountryName, 
         ci.Name as CityName, 
         ci.Population as CityPopulation, 
-        (select sum(ci2.Population) from city ci2 where ci2.CountryCode = c.Code) as TotalPopulation
-    from country c
-    join countrylanguage cl on c.Code = cl.CountryCode
-    join city ci on c.Code = ci.CountryCode
-    where cl.Language = language_name
-      and cl.IsOfficial = 'T'
+        (select sum(ci2.Population) 
+         from city ci2 
+         where ci2.CountryCode = olv.CountryCode) as TotalPopulation
+    from OfficialLanguageView olv
+    join city ci on olv.CountryCode = ci.CountryCode
+    where olv.Language = language_name
       and ci.Name like 'New%'
-    group by c.Name, ci.Name, ci.Population, c.Code
+    group by olv.CountryName, ci.Name, ci.Population, olv.CountryCode
     having TotalPopulation > 5000000
     order by TotalPopulation desc
     limit 10;
