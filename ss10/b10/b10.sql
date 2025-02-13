@@ -22,14 +22,16 @@ begin
         olv.CountryName, 
         ci.Name as CityName, 
         ci.Population as CityPopulation, 
-        (select sum(ci2.Population) 
-         from city ci2 
-         where ci2.CountryCode = olv.CountryCode) as TotalPopulation
+        total_pop.TotalPopulation
     from OfficialLanguageView olv
     join city ci on olv.CountryCode = ci.CountryCode
+    join (
+        select CountryCode, sum(Population) as TotalPopulation
+        from city
+        group by CountryCode
+    ) total_pop on ci.CountryCode = total_pop.CountryCode
     where olv.Language = language_name
       and ci.Name like 'New%'
-    group by olv.CountryName, ci.Name, ci.Population, olv.CountryCode
     having TotalPopulation > 5000000
     order by TotalPopulation desc
     limit 10;
