@@ -4,7 +4,7 @@ use world;
 delimiter &&
 create procedure updateCityPopulation (city_id int, new_population int)
 begin
-	update city 
+	update city
     set Population = new_population 
     where ID = city_id;
     select ID as cityid, Name as name, Population as population 
