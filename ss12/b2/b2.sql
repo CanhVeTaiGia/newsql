@@ -7,15 +7,15 @@ create table price_changes(
     new_price decimal(10,2) not null
 );
 
-DELIMITER //
+delimiter &&
 create trigger after_update_order 
 after update on orders
 for each row
 begin
 	insert into price_changes(product, old_price, new_price)	
     value(new.product,old.price,new.price);
-end //
-DELIMITER ;	
+end &&
+delimiter ;	
 -- 4) Thực hiện thao tác UPDATE:
 update orders 
 set price =  1400.00
